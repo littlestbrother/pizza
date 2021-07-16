@@ -6,40 +6,41 @@
 let orders = []
 
 //constructor for pizza order
-function Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple) {
+function Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
     this.name = name;
     this.cheese = cheese;
     this.pepperoni = pepperoni;
     this.artichoke = artichoke;
     this.anchovy = anchovy;
     this.pineapple = pineapple;
+    this.size = size;
 }
 
 //push order using pizza constructor to global array
-function pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple) {
-    if(testForName(name) == true){
+function pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
+    if (testForDuplicate(name) == true) {//call tesForName() to find possible duplicate
         console.log(name + " is already a name! Please choose a different name.")
     } else {
-    orders.push(new Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple));
-    return orders;
+        orders.push(new Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size));//push Pizza object to array
+        return orders;
     }
 }
 
-//this will use a forEach loop to search through every object's key: 'name' and return the index where it is located.
+//use a forEach loop to search through every object's key: 'name' and return the index where it is located.
 function findOrderIndex(name) {
-    let position = null;
+    let position = null; //where the index integer will be stored.
     orders.forEach((element, index) => {
         // console.log(element)
-        if (element.name == name) {
+        if (element.name == name) {//if the objects key: 'name' matches 
             // console.log("MATCH!");//debug
-            position = index;
+            position = index; //
         }
     })
     return position;
 }
 
-//this will use a forEach loop to search through every object's key: 'name' and will return a boolean
-function testForName(name){
+//use a forEach loop to search through every object's key: 'name' and will return a boolean
+function testForDuplicate(name) {
     let nameExist = false;
     orders.forEach((element) => {
         console.log(element)
@@ -48,4 +49,66 @@ function testForName(name){
         }
     });
     return nameExist;
+}
+
+//forEach to search for name and return object to be served to method calcCost()
+function findOrderObject(name) {
+    let myObject = null;
+    orders.forEach((element) => {
+        // console.log(element)
+        if (element.name == name) {
+            // console.log("MATCH!");//debug
+            myObject = element;
+        }
+    })
+    return myObject;
+}
+
+//serve object in element of array to Pizza method calcCost()
+function checkPlease(name) {
+    return findOrderObject(name).calcCost();
+}
+
+//method for calculating Pizza objects
+Pizza.prototype.calcCost = function () {
+    let total = 0;
+    console.log(this.name);
+   
+    if(this.cheese == true){//if boolean is true or if pizza has topping add $0.50 to total
+        total += .50;
+        console.log('cheese: ' + this.cheese +total);
+    }
+    if(this.pepperoni == true){
+        total += .50;
+        console.log('pepperoni: ' + this.pepperoni +total);
+    }
+    if(this.artichoke == true){
+        total += .50;
+        console.log('artichoke: ' + this.artichoke +total);
+    }
+    if(this.anchovy == true){
+        total += .50;
+        console.log('anchovy: ' + this.anchovy +total);
+    }
+    if(this.pineapple == true){
+        total += .50;
+        console.log('pineapple: ' + this.pineapple +total);
+    }
+
+    switch(this.size){//if size matches either add appropriate integer to total
+        case 'small':
+            total += 3;
+            break;
+        case 'medium':
+            total += 4;
+            break; 
+        case 'large':
+            total += 5;
+            break;
+        default:
+            alert("sorry you get no pizza for causing a bug!");
+            location.reload();
+    }
+    console.log('size: ' + this.size +total);
+    return total;
 }
