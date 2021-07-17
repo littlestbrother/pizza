@@ -1,6 +1,4 @@
-// $(document).ready(function() {
-// console.log("Jquery loaded properly");
-// });
+//backend starts here 👇
 
 //create empty global array to store objects
 let orders = []
@@ -112,3 +110,27 @@ Pizza.prototype.calcCost = function () {
     console.log('size: ' + this.size + " $" + total);
     return total;
 }
+
+// backend ends here 👆
+
+// frontend starts here 👇
+$(document).ready(function () {
+    $("form#form").submit(function (event) {
+        event.preventDefault();
+        // console.log($("input#cheese").val())
+        let name= $("input#name").val();
+        let cheese= $("input#cheese").prop('checked');
+        let pepperoni= $("input#pepperoni").prop('checked');
+        let artichoke= $("input#artichoke").prop('checked');
+        let anchovy= $("input#anchovy").prop('checked');
+        let pineapple= $("input#pineapple").prop('checked');
+        let size= $("input[name=size]:checked").val();
+        // console.log(name,cheese,pepperoni,artichoke,anchovy,pineapple,size);
+        pushOrder(name,cheese,pepperoni,artichoke,anchovy,pineapple,size);
+        checkPlease(name);
+        $("div#result").text(JSON.stringify(orders));//print result on the screen
+
+
+    });
+});
+//frontend ends here 👆

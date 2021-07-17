@@ -15,46 +15,49 @@
 
 <body>
     <div class="container">
-        <h1 class="display-1" id="title">pizza</h1>
+        <em>
+            <h1 class="display-1" id="title">pizza.</h1>
+        </em>
         <form id="form">
             <br>
             <em>
                 <h3>name</h3>
-                <input type="text" placeholder="the doctor">
+                <input type="text" id="name" placeholder="the doctor">
                 <br>
                 <br>
                 <h3>toppings</h3>
                 <label>cheese</label>
-                <input type="checkbox">
+                <input type="checkbox" id="cheese">
                 &nbsp;
                 <label>pepperoni</label>
-                <input type="checkbox">
+                <input type="checkbox" id="pepperoni">
                 &nbsp;
                 <label>artichoke</label>
-                <input type="checkbox">
+                <input type="checkbox" id="artichoke">
                 &nbsp;
                 <label>anchovy</label>
-                <input type="checkbox">
+                <input type="checkbox" id="anchovy">
                 &nbsp;
                 <label>pineapple</label>
-                <input type="checkbox">
+                <input type="checkbox" id="pineapple">
                 &nbsp;
                 <br>
                 <br>
                 <h3>size</h3>
-                <input type="radio" id="small" name="size" value="small">
+                <input type="radio" value="small" name="size">
                   <label for="size">small</label>
                 <br>
-                <input type="radio" id="medium" name="size" value="medium">
+                <input type="radio" value="medium" name="size">
                   <label for="size">medium</label>
                 <br>
-                <input type="radio" id="large" name="size" value="large">
+                <input type="radio" value="large" name="size">
                   <label for="size">large</label>
                 <br>
                 <br>
                 <input type="submit" value="submit">
             </em>
         </form>
+        <div id="result"></div>
         <!-- put stuff here -->
     </div>
 </body>
