@@ -18,7 +18,7 @@ function Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
 
 //push order using pizza constructor to global array
 function pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
-    if (testForDuplicate(name) == true) {//call tesForName() to find possible duplicate
+    if (testForName(name) == true) {//call tesForName() to find possible duplicate
         console.log(name + " is already a name! Please choose a different name.")
     } else {
         orders.push(new Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size));//push Pizza object to array
@@ -40,7 +40,7 @@ function findOrderIndex(name) {
 }
 
 //use a forEach loop to search through every object's key: 'name' and will return a boolean
-function testForDuplicate(name) {
+function testForName(name) {
     let nameExist = false;
     orders.forEach((element) => {
         console.log(element)
@@ -73,35 +73,35 @@ function checkPlease(name) {
 Pizza.prototype.calcCost = function () {
     let total = 0;
     console.log(this.name);
-   
-    if(this.cheese == true){//if boolean is true or if pizza has topping add $0.50 to total
+
+    if (this.cheese == true) {//if boolean is true or if pizza has topping add $0.50 to total
         total += .50;
-        console.log('cheese: ' + this.cheese +total);
+        console.log('cheese: ' + this.cheese + " +$" + total);
     }
-    if(this.pepperoni == true){
+    if (this.pepperoni == true) {
         total += .50;
-        console.log('pepperoni: ' + this.pepperoni +total);
+        console.log('pepperoni: ' + this.pepperoni + " +$" + total);
     }
-    if(this.artichoke == true){
+    if (this.artichoke == true) {
         total += .50;
-        console.log('artichoke: ' + this.artichoke +total);
+        console.log('artichoke: ' + this.artichoke + " +$" + total);
     }
-    if(this.anchovy == true){
+    if (this.anchovy == true) {
         total += .50;
-        console.log('anchovy: ' + this.anchovy +total);
+        console.log('anchovy: ' + this.anchovy + " +$" + total);
     }
-    if(this.pineapple == true){
+    if (this.pineapple == true) {
         total += .50;
-        console.log('pineapple: ' + this.pineapple +total);
+        console.log('pineapple: ' + this.pineapple + " +$" + total);
     }
 
-    switch(this.size){//if size matches either add appropriate integer to total
+    switch (this.size) {//if size matches either add appropriate integer to total
         case 'small':
             total += 3;
             break;
         case 'medium':
             total += 4;
-            break; 
+            break;
         case 'large':
             total += 5;
             break;
@@ -109,6 +109,6 @@ Pizza.prototype.calcCost = function () {
             alert("sorry you get no pizza for causing a bug!");
             location.reload();
     }
-    console.log('size: ' + this.size +total);
+    console.log('size: ' + this.size + " +$" + total);
     return total;
 }
