@@ -76,23 +76,23 @@ Pizza.prototype.calcCost = function () {
 
     if (this.cheese == true) {//if boolean is true or if pizza has topping add $0.50 to total
         total += .50;
-        console.log('cheese: ' + this.cheese + " +$" + total);
+        console.log('cheese: ' + this.cheese + " $" + total);
     }
     if (this.pepperoni == true) {
         total += .50;
-        console.log('pepperoni: ' + this.pepperoni + " +$" + total);
+        console.log('pepperoni: ' + this.pepperoni + " $" + total);
     }
     if (this.artichoke == true) {
         total += .50;
-        console.log('artichoke: ' + this.artichoke + " +$" + total);
+        console.log('artichoke: ' + this.artichoke + " $" + total);
     }
     if (this.anchovy == true) {
         total += .50;
-        console.log('anchovy: ' + this.anchovy + " +$" + total);
+        console.log('anchovy: ' + this.anchovy + " $" + total);
     }
     if (this.pineapple == true) {
         total += .50;
-        console.log('pineapple: ' + this.pineapple + " +$" + total);
+        console.log('pineapple: ' + this.pineapple + " $" + total);
     }
 
     switch (this.size) {//if size matches either add appropriate integer to total
@@ -109,6 +109,6 @@ Pizza.prototype.calcCost = function () {
             alert("sorry you get no pizza for causing a bug!");
             location.reload();
     }
-    console.log('size: ' + this.size + " +$" + total);
+    console.log('size: ' + this.size + " $" + total);
     return total;
 }
