@@ -13,7 +13,7 @@
 
 ## Description
 
-_This application asks the user to submit information about what pizza they'd like and converts it into a javascript array._
+_This application asks the user to submit information about what 🍕 they'd like and converts it into a javascript array._
 
 ## Setup/Installation Requirements
 
@@ -62,7 +62,7 @@ Result: findOrderObject(name, arr).calcCost(); ...basically call the other funct
 Describe: printOrders();
 Test: "It will design a variable in the front end based on the current list of orders to append to the DOM."
 Output: printOrders(arr);
-Result: "/br\/em\/h3\" + element.name + "'s " + " $" + element.total + " " +element.size + " pizza " + "/|h3\" + "cheese: " + element.cheese + "/br\" + "/|h3\" + "pepperoni: " + element.pepperoni + "/br\" + "/|h3\" + "artichoke: " + element.artichoke + "/br\" + "/|h3\" + "anchovy: " + element.anchovy + "/br\" + "/|h3\" + "pineapple: " + element.pineapple + "/br\" + "/|em/"
+Result: ("<em><h3>" + element.name + "'s " + " $" + element.total + " " + element.size + " 🍕 " + "</h3>" + "cheese 🧀 " + element.cheese + "<br>" + "</h3>" + "pepperoni  🔴 " + element.pepperoni + "<br>" + "</h3>" + "artichoke 🌳 " + element.artichoke + "<br>" + "</h3>" + "anchovy 🐟 " + element.anchovy + "<br>" + "</h3>" + "pineapple 🍍 " + element.pineapple + "<br><br>" + "</em>");
 
 (/'|'\ replaces <'/'> to avoid md)
 
