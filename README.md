@@ -74,7 +74,7 @@ Result: "/br\/em\/h3\" + element.name + "'s " + " $" + element.total + " " +elem
 
 ## License
 
-[MIT](https:/|choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Contact Information
 
