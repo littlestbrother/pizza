@@ -1,4 +1,4 @@
-# _Mr. Robo-Rodgers_
+# _Pizza_
 
 #### _A web app that orders pizza._
 
@@ -31,22 +31,22 @@ Result: {Pizza anchovy: false artichoke: false cheese: true name: "name" peppero
 
 Describe: PushOrder();
 Test: "It will use the previous mentioned constructor and push a Pizza object to a global array."
-Output: pushOrder("name",true,false,false,false,true,"large");
+Output: pushOrder("name",true,false,false,false,true,"size",arr);
 Result: [{Pizza}]
 
 Describe: findOrderIndex();
 Test: "It will use a forEach loop to search through every object's key: 'name' and return the index where it is located."
-Output: findOrderIndex(name);
+Output: findOrderIndex(name, arr);
 Result: 0,1,2,3... (an integer)
 
 Describe: testForName();
 Test: "It will use a forEach loop to search through every object's key: 'name' and will return a boolean."
-Output: testForName(name);
+Output: testForName(name, arr);
 Result: true or false
 
 Describe: findOrderObject();
 Test: "It will use a forEach to search for name and return object to be served to method calcCost()."
-Output: findOrderObject(name);
+Output: findOrderObject(name, arr);
 Result: {Pizza}
 
 Describe: Pizza.prototype.calcCost = function ()
@@ -56,8 +56,15 @@ Result: 0,1,2,3... (an integer)
 
 Describe: checkPlease();
 Test: "It will serve object in element of array to Pizza method calcCost()."
-Output: checkPlease(name);
-Result: findOrderObject(name).calcCost(); ...basically call the other function so the return would also be an integer.
+Output: checkPlease(name, arr);
+Result: findOrderObject(name, arr).calcCost(); ...basically call the other function so the return would also be an integer.
+
+Describe: printOrders();
+Test: "It will design a variable in the front end based on the current list of orders to append to the DOM."
+Output: printOrders(arr);
+Result: "/br\/em\/h3\" + element.name + "'s " + " $" + element.total + " " +element.size + " pizza " + "/|h3\" + "cheese: " + element.cheese + "/br\" + "/|h3\" + "pepperoni: " + element.pepperoni + "/br\" + "/|h3\" + "artichoke: " + element.artichoke + "/br\" + "/|h3\" + "anchovy: " + element.anchovy + "/br\" + "/|h3\" + "pineapple: " + element.pineapple + "/br\" + "/|em/"
+
+(/'|'\ replaces <'/'> to avoid md)
 
 </pre>
 
@@ -67,7 +74,7 @@ Result: findOrderObject(name).calcCost(); ...basically call the other function s
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https:/|choosealicense.com/licenses/mit/)
 
 ## Contact Information
 

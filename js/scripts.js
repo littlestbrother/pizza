@@ -1,8 +1,5 @@
 //backend starts here 👇
 
-//create empty global array to store objects
-let orders = []
-
 //constructor for pizza order
 function Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
     this.name = name;
@@ -15,22 +12,19 @@ function Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
 }
 
 //push order using pizza constructor to global array
-function pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple, size) {
-    if (testForName(name) == true) {//call tesForName() to find possible duplicate
-        //console.log(name + " is already a name! Please choose a different name.")
+function pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple, size, arr) {
+    if (testForName(name, arr) == true) { //call tesForName() to find possible duplicate
     } else {
-        orders.push(new Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size));//push Pizza object to array
-        return orders;
+        arr.push(new Pizza(name, cheese, pepperoni, artichoke, anchovy, pineapple, size)); //push Pizza object to array
+        return arr;
     }
 }
 
 //use a forEach loop to search through every object's key: 'name' and return the index where it is located.
-function findOrderIndex(name) {
+function findOrderIndex(name, arr) {
     let position = null; //where the index integer will be stored.
-    orders.forEach((element, index) => {
-        // console.log(element)
-        if (element.name == name) {//if the objects key: 'name' matches 
-            // console.log("MATCH!");//debug
+    arr.forEach((element, index) => {
+        if (element.name == name) { //if the objects key: 'name' matches 
             position = index; //
         }
     })
@@ -38,10 +32,9 @@ function findOrderIndex(name) {
 }
 
 //use a forEach loop to search through every object's key: 'name' and will return a boolean
-function testForName(name) {
+function testForName(name, arr) {
     let nameExist = false;
-    orders.forEach((element) => {
-        //console.log(element)
+    arr.forEach((element) => {
         if (element.name == name) {
             nameExist = true;
         }
@@ -50,12 +43,10 @@ function testForName(name) {
 }
 
 //forEach to search for name and return object to be served to method calcCost()
-function findOrderObject(name) {
+function findOrderObject(name, arr) {
     let myObject = null;
-    orders.forEach((element) => {
-        // console.log(element)
+    arr.forEach((element) => {
         if (element.name == name) {
-            // console.log("MATCH!");//debug
             myObject = element;
         }
     })
@@ -63,74 +54,77 @@ function findOrderObject(name) {
 }
 
 //serve object in element of array to Pizza method calcCost()
-function checkPlease(name) {
-    return findOrderObject(name).calcCost();
+function checkPlease(name, arr) {
+    return findOrderObject(name, arr).calcCost();
 }
 
 //method for calculating Pizza objects
-Pizza.prototype.calcCost = function () {
-    let total = 0;
-    //console.log(this.name);
+Pizza.prototype.calcCost = function() {
+    this.total = 0;
 
-    if (this.cheese == true) {//if boolean is true or if pizza has topping add $0.50 to total
-        total += .50;
-        //console.log('cheese: ' + this.cheese + " $" + total);
+    if (this.cheese == true) { //if boolean is true or if pizza has topping add $0.50 to total
+        this.total += .50;
     }
     if (this.pepperoni == true) {
-        total += .50;
-        //console.log('pepperoni: ' + this.pepperoni + " $" + total);
+        this.total += .50;
     }
     if (this.artichoke == true) {
-        total += .50;
-       //console.log('artichoke: ' + this.artichoke + " $" + total);
+        this.total += .50;
     }
     if (this.anchovy == true) {
-        total += .50;
-        //console.log('anchovy: ' + this.anchovy + " $" + total);
+        this.total += .50;
     }
     if (this.pineapple == true) {
-        total += .50;
-        //console.log('pineapple: ' + this.pineapple + " $" + total);
+        this.total += .50;
     }
 
-    switch (this.size) {//if size matches either add appropriate integer to total
+    switch (this.size) { //if size matches either add appropriate integer to total
         case 'small':
-            total += 3;
+            this.total += 3;
             break;
         case 'medium':
-            total += 4;
+            this.total += 4;
             break;
         case 'large':
-            total += 5;
+            this.total += 5;
             break;
         default:
-            alert("sorry you get no pizza for causing a bug!");
+            alert("srry no 🍕 4 u :(");
             location.reload();
     }
-    //console.log('size: ' + this.size + " $" + total);
-    return total;
+    return this.total;
 }
 
 // backend ends here 👆
 
 // frontend starts here 👇
-$(document).ready(function () {
-    $("form#form").submit(function (event) {
+$(document).ready(function() {
+    //create empty array to store objects
+    let orders = []
+    $("form#form").submit(function(event) {
         event.preventDefault();
-        // console.log($("input#cheese").val())
-        let name= $("input#name").val();
-        let cheese= $("input#cheese").prop('checked');
-        let pepperoni= $("input#pepperoni").prop('checked');
-        let artichoke= $("input#artichoke").prop('checked');
-        let anchovy= $("input#anchovy").prop('checked');
-        let pineapple= $("input#pineapple").prop('checked');
-        let size= $("input[name=size]:checked").val();
-        // console.log(name,cheese,pepperoni,artichoke,anchovy,pineapple,size);
-        pushOrder(name,cheese,pepperoni,artichoke,anchovy,pineapple,size);
-        checkPlease(name);
-        $("div#result").text(JSON.stringify(orders).replace(/[^a-zA-Z: ]/g, " "));//print result on the screen
+        let name = $("input#name").val();
+        let cheese = $("input#cheese").prop('checked');
+        let pepperoni = $("input#pepperoni").prop('checked');
+        let artichoke = $("input#artichoke").prop('checked');
+        let anchovy = $("input#anchovy").prop('checked');
+        let pineapple = $("input#pineapple").prop('checked');
+        let size = $("input[name=size]:checked").val();
+        pushOrder(name, cheese, pepperoni, artichoke, anchovy, pineapple, size, orders);
+        let total = checkPlease(name, orders);
+        //$("div#result").html("<p>" + JSON.stringify(orders).replace(/[^a-zA-Z:]/g, " ") + " total price: " + " $" + total);//print result on the screen
+        $("h1.orders").show();
+        $("div#result").html(printOrders(orders));
 
 
+        //front end function to create HTML section per order
+        function printOrders(arr) {
+            let result = "";
+            arr.forEach(element => {
+                result += ("<em><h3>" + element.name + "'s " + " $" + element.total + " " + element.size + " pizza " + "</h3>" + "cheese: " + element.cheese + "<br>" + "</h3>" + "pepperoni: " + element.pepperoni + "<br>" + "</h3>" + "artichoke: " + element.artichoke + "<br>" + "</h3>" + "anchovy: " + element.anchovy + "<br>" + "</h3>" + "pineapple: " + element.pineapple + "<br><br>" + "</em>");
+            });
+            return result;
+        }
     });
 });
 //frontend ends here 👆
