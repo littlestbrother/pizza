@@ -1,6 +1,6 @@
-# _Pizza_
+# _🍕🍕🍕_
 
-#### _A web app that orders pizza._
+#### _A web app that orders 🍕_
 
 #### By _**Aaron Kauffman**_
 
