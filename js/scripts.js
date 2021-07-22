@@ -121,7 +121,7 @@ $(document).ready(function() {
         function printOrders(arr) {
             let result = "";
             arr.forEach(element => {
-                result += ("<em><h3>" + element.name + "'s " + " $" + element.total + " " + element.size + " pizza " + "</h3>" + "cheese: " + element.cheese + "<br>" + "</h3>" + "pepperoni: " + element.pepperoni + "<br>" + "</h3>" + "artichoke: " + element.artichoke + "<br>" + "</h3>" + "anchovy: " + element.anchovy + "<br>" + "</h3>" + "pineapple: " + element.pineapple + "<br><br>" + "</em>");
+                result += ("<em><h3>" + element.name + "'s " + " $" + element.total + " " + element.size + " 🍕 " + "</h3>" + "cheese 🧀 " + element.cheese + "<br>" + "</h3>" + "pepperoni  🔴 " + element.pepperoni + "<br>" + "</h3>" + "artichoke 🌳 " + element.artichoke + "<br>" + "</h3>" + "anchovy 🐟 " + element.anchovy + "<br>" + "</h3>" + "pineapple 🍍 " + element.pineapple + "<br><br>" + "</em>");
             });
             return result;
         }
